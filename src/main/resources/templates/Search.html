@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+<form th:action="@{/book/search}" th:method="post">
+    <div>
+        Name <input type="text" name="searchKey">
+    </div>
+    <div>
+        <input type="submit" value="Search">
+    </div>
+    <ul th:if="${listBook.size() > 0}">
+        <li th:each="book: ${listBook}">
+            <div th:text="${book.name}"></div>
+            <div th:text="${book.author}"></div>
+            <div th:text="${book.genre}"></div>
+            <div th:text="${book.publisher.name}"></div>
+        </li>
+    </ul>
+</form>
+</body>
+</html>
